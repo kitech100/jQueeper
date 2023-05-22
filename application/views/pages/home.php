@@ -5,7 +5,9 @@
             passwords <br>
         </h1>
         <div class="d-flex align-items-center mt-5">
-            <a type="button" class="btn btn-secondary rounded-0 " href="<?php echo base_url() ?>login">Get Started</a>
+            <?php if (!$this->session->userdata('is_logged_in')) : ?>
+                <a type="button" class="btn btn-secondary rounded-0 " href="<?php echo base_url() ?>login">Get Started</a>
+            <?php endif; ?>
             <a class="link-secondary ms-auto" href="<?php echo base_url() ?>whats-new">See what's New</a>
         </div>
     </div>

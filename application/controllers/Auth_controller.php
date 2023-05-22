@@ -22,31 +22,45 @@ class Auth_controller extends CI_Controller
     {
         $data['title'] = 'Sign up';
 
-
         $this->load->view('templates/header');
         $this->load->view('auth/sign-up', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function show_dashboard()
+    {
+        $data['title'] = 'Manager';
+
+        $this->load->view('templates/header');
+        $this->load->view('auth/dashboard', $data);
         $this->load->view('templates/footer');
     }
 
 
     public function login()
     {
-        $username = $this->input->post('username');
-        $password =  $this->input->post('password');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
 
-        $user_data = array(
-            'username' => $username,
-            'password' => $password,
-        );
-
-        $user = $this->user_model->verify_user($user_data);
-
-
-        if (!empty($user)) {
-            $this->session->set_userdata('logged_in', TRUE);
-            exit(json_encode($user));
+        if ($this->form_validation->run() == FALSE) {
+            $json_response['form_errors'] = $this->form_validation->error_array();
+            exit(json_encode($json_response));
         } else {
-            $json_response['login_erros'] = 'Invalid credentials, Please Try Again!';
+            $user_data = array(
+                'email' => $this->input->post('email'),
+                'password' => $this->input->post('password'),
+            );
+
+            $auth_user = $this->user_model->verify_user($user_data);
+
+            if ($auth_user) {
+                $this->session->set_userdata($auth_user);
+                $this->session->set_userdata('is_logged_in', true);
+                $json_response['success'] = true;
+                $json_response['redirect_url'] = base_url('dashboard');
+            } else {
+                $json_response['error'] = 'Invalid email or password';
+            }
 
             exit(json_encode($json_response));
         }
@@ -104,6 +118,18 @@ class Auth_controller extends CI_Controller
             return FALSE;
         }
         return TRUE;
+    }
+
+    public function logout()
+    {
+        $session_data = array('user_id', 'email', 'password', "is_logged_in");
+        $this->session->unset_userdata($session_data);
+
+        $this->session->sess_destroy();
+        $this->session->set_flashdata('logout', 'You have successfully logged out');
+
+
+        redirect('login');
     }
 
 

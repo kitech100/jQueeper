@@ -15,17 +15,22 @@ class User_model extends CI_Model
 
     public function verify_user($user_data)
     {
-        $username = $user_data['username'];
-        $password = $user_data['password'];
+        /// Perform database query to verify user credentials
+        // Example query using Active Record:
 
-        $query = $this->db->get_where('users', array(
-            'username' => $username,
-            'password' => $password,
-        ));
-        if ($query->num_rows() > 0) {
-            return $query->row();
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('email', $user_data['email']);
+        $query = $this->db->get()->row_array();
+
+
+        if (!empty($query)) {
+            if (password_verify($user_data['password'], $query['password'])) {
+
+                return $query;
+            }
         } else {
-            return FALSE;
+            return false;
         }
     }
 

@@ -4,13 +4,16 @@
             <?= $title ?>
         </h1>
         <form id="logIn" method="POST">
+            <div id="loginMessage"></div>
             <div class="mb-3">
-                <label class="form-label">Username</label>
-                <input type="text" class="form-control" id="userName" name="username">
+                <label class="form-label">Email</label>
+                <input type="text" class="form-control" id="emailId" name="email" autocomplete="off">
+                <span class="text-danger" class="text-danger" id="emailLogInErr"></span>
             </div>
             <div class="mb-3">
                 <label class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <input type="password" class="form-control" id="passWord" name="password">
+                <span class="text-danger" class="text-danger" id="passwordLogin"></span>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-secondary">Login</button><br>

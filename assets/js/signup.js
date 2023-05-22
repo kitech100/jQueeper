@@ -7,8 +7,6 @@ $(document).ready(function () {
 			data: $(this).serialize(),
 			dataType: "json",
 			success: function (response) {
-				console.log(response);
-
 				// if success sign up prompt
 				if (response.message) {
 					$("#main_Container").prepend(`
