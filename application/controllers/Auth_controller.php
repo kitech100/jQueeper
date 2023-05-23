@@ -56,6 +56,7 @@ class Auth_controller extends CI_Controller
             if ($auth_user) {
                 $this->session->set_userdata($auth_user);
                 $this->session->set_userdata('is_logged_in', true);
+
                 $json_response['success'] = true;
                 $json_response['redirect_url'] = base_url('dashboard');
             } else {
@@ -128,38 +129,6 @@ class Auth_controller extends CI_Controller
         $this->session->sess_destroy();
         $this->session->set_flashdata('logout', 'You have successfully logged out');
 
-
         redirect('login');
-    }
-
-
-    public function show($id)
-    {
-        // code to retrieve a single record by ID from the model and pass it to a view goes here
-    }
-
-    public function create()
-    {
-        // code to display a form for creating a new record goes here
-    }
-
-    public function store()
-    {
-        // code to process the form submission and create a new record in the model goes here
-    }
-
-    public function edit($id)
-    {
-        // code to retrieve a single record by ID from the model, display a form for editing it, and pass the record data to the form goes here
-    }
-
-    public function update($id)
-    {
-        // code to process the form submission and update an existing record in the model goes here
-    }
-
-    public function delete($id)
-    {
-        // code to delete a record by ID from the model goes here
     }
 }

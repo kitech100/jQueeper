@@ -1,53 +1,20 @@
 $(document).ready(function () {
-	$("#addKeysModal").click(function () {
-		let email = $("#emailAddressAdd").val();
-		let password = $("#passwordAdd").val();
-		let link = $("#linkAdd").val();
-		let tag = $("#tagAdd").val();
-
-		let formData = {
-			email: email,
-			password: password,
-			link: link,
-			tag: tag,
-		};
-
+	$(document).on("click", "#deleteKey", function () {
+		let id = $(this).siblings("input[type=hidden]").val();
+		console.log(id);
 		$.ajax({
 			type: "POST",
-			url: "Password_controller/addKeys",
-			data: formData,
+			url: `delete/${id}`,
+			data: "data",
 			dataType: "json",
 			success: function (response) {
-				// console.log(response.form_errors);
-
-				// inputs
-				// $("#emailAddressAdd").val("");
-				// $("#passwordAdd").val("");
-				// $("#linkAdd").val("");
-				// $("#tagAdd").val("");
-
-				// reset error show
-				$("#emailAddFormErr").html("");
-				$("#passwordAddFormErr").html("");
-				$("#linkAddFormErr").html("");
-				$("#selectAddErr").html("");
-
-				// If error show error
-				if (response.form_errors) {
-					$("#emailAddFormErr").html(response.form_errors.email);
-					$("#passwordAddFormErr").html(response.form_errors.password);
-					$("#linkAddFormErr").html(response.form_errors.link);
-					$("#selectAddErr").html(response.form_errors.tag);
-				}
-
+				console.log(response);
 				if (response.message) {
 					$("#addKeysModalOpen").modal("hide");
 					$("#main_Container").prepend(`
-				<div id="alertSignUpSucess" class="alert alert-success" role="alert">
+				<div id="alertSignUpSucess" class="alert alert-danger" role="alert">
 				${response.message}
 				</div>`);
-
-					$("#addModalForm")[0].reset();
 
 					setTimeout(function () {
 						$("#alertSignUpSucess").fadeOut(300, function () {

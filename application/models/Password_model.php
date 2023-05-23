@@ -8,27 +8,31 @@ class Password_model extends CI_Model
         return $query->result_array();
     }
 
-    public function get_all()
+    public function insertKeys($data)
     {
-        // code to retrieve all records goes here
+        return $this->db->insert('password_manager', $data);
     }
 
-    public function get($id)
+    public function get_show_edit($id)
     {
-        // code to retrieve a single record by ID goes here
+
+        $this->db->where('id', $id);
+        $query = $this->db->get('password_manager');
+        return $query->row_array();
     }
 
-    public function create()
+    public function update_key($data)
     {
+        $id = $data['id'];
+
+        $this->db->where('id', $id);
+        return $this->db->update('password_manager', $data);
     }
 
-    public function update($id, $data)
+    public function delete_key($id)
     {
-        // code to update an existing record by ID goes here
-    }
-
-    public function delete($id)
-    {
-        // code to delete a record by ID goes here
+        $this->db->where('id', $id);
+        $this->db->delete('password_manager');
+        return true;
     }
 }

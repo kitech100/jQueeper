@@ -27,7 +27,7 @@
                         </li>
                         <?php if ($this->session->userdata('is_logged_in')) : ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Password Manager</a>
+                                <a class="nav-link" href="<?php echo base_url() ?>dashboard">Password Manager</a>
                             </li>
                         <?php endif; ?>
                     </ul>
