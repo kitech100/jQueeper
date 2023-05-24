@@ -14,6 +14,7 @@ $route['edit/(:any)'] = 'password_controller/show_edit/$1';
 $route['update/(:any)'] = 'password_controller/update/$1';
 $route['delete/(:any)'] = 'password_controller/delete/$1';
 
+$route['generate_password'] = 'generatepassword_controller/show_generate_password';
 
 $route['whats-new'] = 'update_controller/index';
 

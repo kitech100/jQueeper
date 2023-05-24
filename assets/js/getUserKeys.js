@@ -87,7 +87,6 @@ $(document).ready(function () {
 
 	$(document).on("click", "#openEditModal", function (e) {
 		let id = $(this).siblings("input[type=hidden]").val();
-		// console.log(id);
 
 		$.ajax({
 			type: "GET",

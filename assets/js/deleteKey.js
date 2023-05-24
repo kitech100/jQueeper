@@ -23,6 +23,9 @@ $(document).ready(function () {
 					}, 2500);
 				}
 
+				// Clear the key list container
+				$("#keysDisplay").empty();
+
 				$.ajax({
 					type: "GET",
 					url: "Password_controller/show_password_manager",
@@ -31,7 +34,7 @@ $(document).ready(function () {
 						// console.log(response);
 
 						if (response.length) {
-							$("#keysDisplay").children().remove();
+							// $("#keysDisplay").children().remove();
 							$.each(response, function (index, value) {
 								let completeURL = value.url.startsWith("http")
 									? value.url

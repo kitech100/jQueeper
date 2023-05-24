@@ -78,7 +78,7 @@ $(document).ready(function () {
 										Link : <a href="${completeURL}" target="_blank">${value.url}</a>
 									</h6>
 									<div class="d-flex flex-wrap gap-2">
-									<button id="openEditModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+									<button id="openEditModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openUpdateKeyModal">
 											<i class="fa-regular fa-pen-to-square"></i>
 										</button>
 										<input id="inputHiddenId" type="hidden" value="${value.id}">

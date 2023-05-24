@@ -7,6 +7,7 @@
 <script src="<?php echo base_url('assets/js/addSecretKeys.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/updateKeys.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/deleteKey.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/generateKey.js') ?>"></script>
 </body>
 
 </html>

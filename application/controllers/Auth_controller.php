@@ -29,11 +29,18 @@ class Auth_controller extends CI_Controller
 
     public function show_dashboard()
     {
-        $data['title'] = 'Manager';
 
-        $this->load->view('templates/header');
-        $this->load->view('auth/dashboard', $data);
-        $this->load->view('templates/footer');
+
+        if (!$this->session->userdata('logged_in')) {
+            // User is not logged in, redirect to login page
+            redirect('login');
+        } else {
+            $data['title'] = 'Manager';
+
+            $this->load->view('templates/header');
+            $this->load->view('auth/dashboard', $data);
+            $this->load->view('templates/footer');
+        }
     }
 
 

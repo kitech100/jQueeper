@@ -66,14 +66,20 @@ class Password_controller extends CI_Controller
             'tag' => $this->input->post('tag')
         );
 
+
         $result = $this->password_model->update_key($data);
-        exit(json_encode($result));
+
+        if ($result) {
+            $json_response['message'] = 'Key successfully Updated.';
+            exit(json_encode($json_response));
+            exit(json_encode($result));
+        }
     }
 
     public function delete($id)
     {
         $this->password_model->delete_key($id);
-        $json_response['message'] = 'Key successfull deleted.';
+        $json_response['message'] = 'Key successfully Deleted.';
         exit(json_encode($json_response));
     }
 }
