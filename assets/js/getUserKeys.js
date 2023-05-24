@@ -79,31 +79,31 @@ $(document).ready(function () {
 						.addClass("fas fa-eye");
 				}
 			});
+
+			$(document).on("click", "#exampleModal", function (e) {
+				let id = $(this).siblings("input[type=hidden]").val();
+
+				$.ajax({
+					type: "GET",
+					url: `edit/${id}`,
+					data: "data",
+					dataType: "json",
+					success: function (response) {
+						// console.log(response);
+
+						$("#headModalLabel").append(response.url);
+
+						$("#editModalHiddenValue").val(response.id);
+						$("#emailAddressEdit").val(response.username_email);
+						$("#passwordEdit").val(response.password);
+						$("#linkEdit").val(response.url);
+						$("#tagEdit").val(response.tag);
+					},
+				});
+			});
 		},
 		error: function (error) {
 			console.log("Error:", error);
 		},
-	});
-
-	$(document).on("click", "#openEditModal", function (e) {
-		let id = $(this).siblings("input[type=hidden]").val();
-
-		$.ajax({
-			type: "GET",
-			url: `edit/${id}`,
-			data: "data",
-			dataType: "json",
-			success: function (response) {
-				// console.log(response);
-
-				$("#headModalLabel").append(response.url);
-
-				$("#editModalHiddenValue").val(response.id);
-				$("#emailAddressEdit").val(response.username_email);
-				$("#passwordEdit").val(response.password);
-				$("#linkEdit").val(response.url);
-				$("#tagEdit").val(response.tag);
-			},
-		});
 	});
 });
