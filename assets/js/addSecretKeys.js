@@ -120,23 +120,6 @@ $(document).ready(function () {
 							</div>
 						  </div>`);
 						}
-
-						$(document).on("click", "#togglePasswordBtn", function () {
-							var passwordField = $(this).siblings("#passwordField");
-							var togglePasswordIcon = $("#togglePasswordIcon");
-
-							if (passwordField.attr("type") === "password") {
-								passwordField.attr("type", "text");
-								togglePasswordIcon
-									.removeClass("fas fa-eye")
-									.addClass("fas fa-eye-slash");
-							} else {
-								passwordField.attr("type", "password");
-								togglePasswordIcon
-									.removeClass("fas fa-eye-slash")
-									.addClass("fas fa-eye");
-							}
-						});
 					},
 					error: function (error) {
 						console.log("Error:", error);
@@ -146,3 +129,18 @@ $(document).ready(function () {
 		});
 	});
 });
+// $(document).ready(function () {
+// 	$(document).on("click", "#togglePasswordBtn", function () {
+// 		alert();
+// 		var passwordField = $(this).siblings("#passwordField");
+// 		var togglePasswordIcon = $("#togglePasswordIcon");
+
+// 		if (passwordField.attr("type") === "password") {
+// 			passwordField.attr("type", "text");
+// 			togglePasswordIcon.removeClass("fas fa-eye").addClass("fas fa-eye-slash");
+// 		} else {
+// 			passwordField.attr("type", "password");
+// 			togglePasswordIcon.removeClass("fas fa-eye-slash").addClass("fas fa-eye");
+// 		}
+// 	});
+// });

@@ -3,7 +3,7 @@ class GeneratePassword_controller extends CI_Controller
 {
     public function show_generate_password()
     {
-        if (!$this->session->userdata('logged_in')) {
+        if (!$this->session->userdata('is_logged_in')) {
             // User is not logged in, redirect to login page
             redirect('login');
         } else {

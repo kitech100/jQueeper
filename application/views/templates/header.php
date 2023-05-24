@@ -32,10 +32,10 @@
                             </li>
                         <?php endif; ?>
                         <?php if ($this->session->userdata('is_logged_in')) : ?>
-                            < <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="<?php echo base_url() ?>generate_password">Key Generator</a>
-                                </li>
-                            <?php endif; ?>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <?php if (!$this->session->userdata('is_logged_in')) : ?>

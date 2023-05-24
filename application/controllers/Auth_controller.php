@@ -30,9 +30,7 @@ class Auth_controller extends CI_Controller
     public function show_dashboard()
     {
 
-
-        if (!$this->session->userdata('logged_in')) {
-            // User is not logged in, redirect to login page
+        if (!$this->session->userdata('is_logged_in')) {
             redirect('login');
         } else {
             $data['title'] = 'Manager';
